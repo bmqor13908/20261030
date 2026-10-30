@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="前端工程師個人履歷與作品集">
+  <title>Alex Chen｜Frontend Developer</title>
+
+  <!-- Bootstrap 5：使用 Bootstrap Grid、Utilities 與元件切版 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    :root {
+      --bg: #080d1b;
+      --surface: #101a2e;
+      --surface-2: #14233b;
+      --text: #eaf2ff;
+      --muted: #9aabc4;
+      --cyan: #31e6df;
+      --violet: #9b7bff;
+      --line: rgba(139, 180, 220, .18);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", sans-serif;
+      line-height: 1.7;
+    }
+
+    a { text-decoration: none; }
+    .navbar {
+      background: rgba(8, 13, 27, .88);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .navbar-brand, .nav-link { color: var(--text) !important; }
+    .navbar-brand span { color: var(--cyan); }
+    .nav-link:hover { color: var(--cyan) !important; }
+
+    .hero {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(155,123,255,.19), transparent 32%),
+        radial-gradient(circle at 15% 80%, rgba(49,230,223,.12), transparent 30%),
+        var(--bg);
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+    }
+    .eyebrow {
+      color: var(--cyan);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: .82rem;
+      font-weight: 700;
+    }
+    .hero h1 { font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 800; line-height: 1.12; }
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .lead, .muted { color: var(--muted); }
+    .section { padding: 6rem 0; }
+    .section-title { font-weight: 800; margin-bottom: .5rem; }
+    .section-subtitle { color: var(--muted); margin-bottom: 2.5rem; }
+    .section-kicker { color: var(--cyan); font-size: .8rem; letter-spacing: .16em; font-weight: 700; }
+
+    .profile-frame {
+      max-width: 330px;
+      margin-inline: auto;
+      padding: 10px;
+      border: 1px solid rgba(49,230,223,.55);
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(49,230,223,.12), rgba(155,123,255,.12));
+      box-shadow: 0 0 55px rgba(49,230,223,.10);
+    }
+    .profile-placeholder {
+      min-height: 360px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #1a3150, #11182b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      font-size: 5rem;
+    }
+    .panel, .skill-card, .project-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      height: 100%;
+    }
+    .panel { padding: 1.5rem; }
+    .panel:hover, .skill-card:hover, .project-card:hover {
+      border-color: rgba(49,230,223,.55);
+      transform: translateY(-4px);
+      transition: .25s ease;
+    }
+    .icon-box {
+      width: 48px; height: 48px;
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 14px;
+      color: var(--cyan);
+      background: rgba(49,230,223,.10);
+      font-size: 1.35rem;
+    }
+    .timeline-item { border-left: 2px solid rgba(49,230,223,.45); padding: 0 0 2rem 1.5rem; position: relative; }
+    .timeline-item::before {
+      content: ""; position: absolute; left: -7px; top: 7px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--cyan); box-shadow: 0 0 14px var(--cyan);
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .date { color: var(--cyan); font-size: .88rem; font-weight: 700; }
+    .skill-card { padding: 1.25rem; }
+    .skill-tag {
+      display: inline-block; padding: .35rem .7rem; margin: .25rem;
+      border: 1px solid rgba(155,123,255,.35); border-radius: 999px;
+      color: #c9bcff; background: rgba(155,123,255,.08); font-size: .85rem;
+    }
+    .project-card { overflow: hidden; }
+    .project-visual {
+      min-height: 170px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(49,230,223,.16), rgba(155,123,255,.22));
+      color: var(--cyan); font-size: 3rem;
+    }
+    .project-content { padding: 1.4rem; }
+    .btn-cyber {
+      color: #06131b; background: var(--cyan); border: 1px solid var(--cyan);
+      font-weight: 700; border-radius: 999px; padding: .7rem 1.25rem;
+    }
+    .btn-cyber:hover { color: #06131b; background: #7ffff6; border-color: #7ffff6; }
+    .btn-outline-cyber {
+      color: var(--cyan); border: 1px solid var(--cyan); border-radius: 999px;
+      padding: .7rem 1.25rem;
+    }
+    .btn-outline-cyber:hover { color: #06131b; background: var(--cyan); }
+    .contact-link { color: var(--text); }
+    .contact-link:hover { color: var(--cyan); }
+    footer { border-top: 1px solid var(--line); color: var(--muted); }
+    .form-control {
+      color: var(--text); background: var(--surface); border: 1px solid var(--line);
+    }
+    .form-control:focus {
+      color: var(--text); background: var(--surface);
+      border-color: var(--cyan); box-shadow: 0 0 0 .2rem rgba(49,230,223,.12);
+    }
+    @media (max-width: 767.98px) {
+      .hero { min-height: auto; padding: 7rem 0 4rem; }
+      .section { padding: 4rem 0; }
+      .profile-placeholder { min-height: 260px; }
+    }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="90" tabindex="0">
+  <!-- 導覽列 -->
+  <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#home">&lt;<span>YOUR NAME</span> /&gt;</a>
+      <button class="navbar-toggler border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="切換導覽列">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="#about">關於我</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">學經歷</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">技能</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">作品集</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">聯絡我</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 首頁 Hero -->
+  <header id="home" class="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7 order-2 order-lg-1">
+          <p class="eyebrow mb-3">Hello, World! I'm</p>
+          <h1 class="mb-3">你的姓名<br><span class="gradient-text">Frontend Developer</span></h1>
+          <p class="lead mb-4">
+            熱衷於打造流暢、易用且具視覺吸引力的網頁體驗。
+            擅長將設計概念轉化為響應式介面，持續探索前端技術與使用者體驗的可能性。
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a class="btn btn-cyber" href="#portfolio">瀏覽作品集 <i class="bi bi-arrow-up-right ms-1"></i></a>
+            <a class="btn btn-outline-cyber" href="#contact">聯絡我</a>
+          </div>
+          <div class="d-flex flex-wrap gap-4 mt-5 muted small">
+            <span><i class="bi bi-geo-alt me-2"></i>台灣・台中</span>
+            <span><i class="bi bi-code-slash me-2"></i>Frontend Development</span>
+            <span><i class="bi bi-envelope me-2"></i>your.email@example.com</span>
+          </div>
+        </div>
+        <div class="col-lg-5 order-1 order-lg-2 text-center">
+          <div class="profile-frame">
+            <!-- 可將下方圖示區塊替換成自己的照片：
+                 <img src="images/profile.jpg" class="img-fluid rounded-4" alt="個人照片"> -->
+            <div class="profile-placeholder"><i class="bi bi-person-bounding-box"></i></div>
+          </div>
+          <p class="muted small mt-3 mb-0">CREATIVE · RESPONSIVE · USER-FOCUSED</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 關於我 -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-4">
+            <p class="section-kicker mb-2">01 / ABOUT</p>
+            <h2 class="section-title display-6">關於我</h2>
+            <p class="section-subtitle mb-0">用程式實現想法，讓每一次互動都有價值。</p>
+          </div>
+          <div class="col-lg-8">
+            <div class="panel">
+              <p class="mb-3">
+                我是一位對前端開發充滿熱情的求職者，具備網頁切版與互動介面開發能力。
+                我重視程式碼的可讀性、跨裝置瀏覽體驗與細節品質，並樂於與設計及後端夥伴合作。
+              </p>
+              <p class="muted mb-0">
+                期待加入重視使用者體驗與技術成長的團隊，持續精進前端專業，
+                將需求轉化為穩定、易維護且有質感的產品。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 學經歷 -->
+    <section id="experience" class="section" style="background: rgba(16,26,46,.45);">
+      <div class="container">
+        <p class="section-kicker mb-2">02 / JOURNEY</p>
+        <h2 class="section-title display-6">學經歷</h2>
+        <p class="section-subtitle">請依照自己的真實資料修改以下範例。</p>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="panel">
+              <div class="d-flex align-items-center gap-3 mb-4">
+                <span class="icon-box"><i class="bi bi-mortarboard"></i></span>
+                <h3 class="h4 mb-0">學歷</h3>
+              </div>
+              <div class="timeline-item">
+                <div class="date">20XX — 20XX</div>
+                <h4 class="h5 mt-1">○○大學｜資訊工程學系</h4>
+                <p class="muted mb-0">學士學位・主修：網頁程式設計、資料結構、資料庫系統</p>
+              </div>
+              <div class="timeline-item">
+                <div class="date">20XX — 20XX</div>
+                <h4 class="h5 mt-1">○○高中｜普通科</h4>
+                <p class="muted mb-0">可填寫相關社團、競賽或學習成果</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="panel">
+              <div class="d-flex align-items-center gap-3 mb-4">
+                <span class="icon-box"><i class="bi bi-briefcase"></i></span>
+                <h3 class="h4 mb-0">工作／專案經歷</h3>
+              </div>
+              <div class="timeline-item">
+                <div class="date">20XX — 至今</div>
+                <h4 class="h5 mt-1">前端工程師／個人專案</h4>
+                <p class="muted mb-0">使用 HTML、CSS、JavaScript 與 Bootstrap 建置響應式網站，優化操作流程與版面呈現。</p>
+              </div>
+              <div class="timeline-item">
+                <div class="date">20XX — 20XX</div>
+                <h4 class="h5 mt-1">○○公司｜職稱</h4>
+                <p class="muted mb-0">填寫負責工作、合作內容，以及可量化的成果或貢獻。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="section">
+      <div class="container">
+        <p class="section-kicker mb-2">03 / TECH STACK</p>
+        <h2 class="section-title display-6">技術技能</h2>
+        <p class="section-subtitle">依照熟悉程度與實際經驗調整，面試時可準備對應案例。</p>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="skill-card">
+              <span class="icon-box mb-3"><i class="bi bi-code-slash"></i></span>
+              <h3 class="h5">前端核心</h3>
+              <div class="mt-2">
+                <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span>
+                <span class="skill-tag">JavaScript</span><span class="skill-tag">RWD</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="skill-card">
+              <span class="icon-box mb-3"><i class="bi bi-bootstrap"></i></span>
+              <h3 class="h5">框架與版型</h3>
+              <div class="mt-2">
+                <span class="skill-tag">Bootstrap 5</span><span class="skill-tag">Flexbox</span>
+                <span class="skill-tag">CSS Grid</span><span class="skill-tag">Sass（如適用）</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="skill-card">
+              <span class="icon-box mb-3"><i class="bi bi-tools"></i></span>
+              <h3 class="h5">開發工具</h3>
+              <div class="mt-2">
+                <span class="skill-tag">Git / GitHub</span><span class="skill-tag">VS Code</span>
+                <span class="skill-tag">Chrome DevTools</span><span class="skill-tag">Figma</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 作品集：請自行替換每個 href -->
+    <section id="portfolio" class="section" style="background: rgba(16,26,46,.45);">
+      <div class="container">
+        <p class="section-kicker mb-2">04 / SELECTED WORKS</p>
+        <h2 class="section-title display-6">作品集</h2>
+        <p class="section-subtitle">點擊「查看作品」即可前往你設定的專案網址。</p>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <article class="project-card">
+              <div class="project-visual"><i class="bi bi-window-stack"></i></div>
+              <div class="project-content">
+                <p class="section-kicker mb-2">PROJECT 01</p>
+                <h3 class="h5">響應式形象網站</h3>
+                <p class="muted small">使用 Bootstrap 建立多裝置適用的網站版型，呈現品牌資訊與服務內容。</p>
+                <div class="mb-3"><span class="skill-tag">Bootstrap</span><span class="skill-tag">RWD</span><span class="skill-tag">HTML/CSS</span></div>
+                <a class="btn btn-outline-cyber btn-sm" href="https://example.com/project-1" target="_blank" rel="noopener noreferrer">查看作品 <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <article class="project-card">
+              <div class="project-visual"><i class="bi bi-cart3"></i></div>
+              <div class="project-content">
+                <p class="section-kicker mb-2">PROJECT 02</p>
+                <h3 class="h5">電商介面設計</h3>
+                <p class="muted small">規劃商品列表、商品資訊與購物流程，著重資訊層級及操作體驗。</p>
+                <div class="mb-3"><span class="skill-tag">JavaScript</span><span class="skill-tag">Bootstrap</span><span class="skill-tag">UI</span></div>
+                <a class="btn btn-outline-cyber btn-sm" href="https://example.com/project-2" target="_blank" rel="noopener noreferrer">查看作品 <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <article class="project-card">
+              <div class="project-visual"><i class="bi bi-bar-chart-line"></i></div>
+              <div class="project-content">
+                <p class="section-kicker mb-2">PROJECT 03</p>
+                <h3 class="h5">資料儀表板</h3>
+                <p class="muted small">設計清楚易讀的資訊面板，整理數據摘要與常用操作入口。</p>
+                <div class="mb-3"><span class="skill-tag">JavaScript</span><span class="skill-tag">Dashboard</span><span class="skill-tag">RWD</span></div>
+                <a class="btn btn-outline-cyber btn-sm" href="https://example.com/project-3" target="_blank" rel="noopener noreferrer">查看作品 <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聯絡資訊 -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <p class="section-kicker mb-2">05 / CONTACT</p>
+            <h2 class="section-title display-6">一起打造更好的網頁體驗</h2>
+            <p class="section-subtitle mb-4">期待有機會進一步交流，歡迎透過以下方式與我聯繫。</p>
+            <div class="d-flex flex-column gap-3">
+              <a class="contact-link" href="mailto:your.email@example.com"><i class="bi bi-envelope icon-box me-3"></i>your.email@example.com</a>
+              <a class="contact-link" href="https://github.com/your-account" target="_blank" rel="noopener noreferrer"><i class="bi bi-github icon-box me-3"></i>GitHub：your-account</a>
+              <a class="contact-link" href="https://www.linkedin.com/in/your-account" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin icon-box me-3"></i>LinkedIn：your-account</a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="panel">
+              <h3 class="h5 mb-3">求職方向</h3>
+              <p class="muted mb-4">應徵職位：前端工程師（Frontend Engineer）</p>
+              <div class="row g-3">
+                <div class="col-6"><div class="p-3 rounded-3" style="background:var(--surface-2)"><div class="date">FOCUS</div><strong>使用者體驗</strong></div></div>
+                <div class="col-6"><div class="p-3 rounded-3" style="background:var(--surface-2)"><div class="date">GOAL</div><strong>持續精進技術</strong></div></div>
+              </div>
+              <!-- 可替換為自己的 PDF 履歷連結 -->
+              <a class="btn btn-cyber mt-4" href="mailto:your.email@example.com?subject=前端工程師面試邀約">寄送面試邀約 <i class="bi bi-send ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span>© 2026 YOUR NAME. All rights reserved.</span>
+      <span>Designed & Built with Bootstrap 5</span>
+      <a class="contact-link" href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
