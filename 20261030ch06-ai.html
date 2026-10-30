@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毛孩幸福中途之家｜狗狗認養平台</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+
+    <style>
+        /* 全站基本設定 */
+        body {
+            background-color: #fffaf3;
+            color: #66564a;
+            font-family: "Microsoft JhengHei", sans-serif;
+        }
+
+        .container {
+            max-width: 1320px;
+        }
+
+        /* Header */
+        .header {
+            min-height: 160px;
+            background-color: #f5e6d3;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 38px;
+            font-weight: 900;
+            color: #8b6348;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 17px;
+            margin-bottom: 0;
+            color: #98765e;
+        }
+
+        /* 導覽列 */
+        .navbar-custom {
+            background-color: #fff0df;
+            border-radius: 15px;
+            padding: 12px 20px;
+        }
+
+        .navbar-custom a {
+            color: #8b6348;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 12px;
+        }
+
+        .navbar-custom a:hover {
+            color: #d28c65;
+        }
+
+        /* 區塊標題 */
+        .section-title {
+            color: #936b50;
+            font-size: 27px;
+            font-weight: 900;
+            text-align: center;
+            margin: 35px 0 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #b1957d;
+            margin-bottom: 15px;
+        }
+
+        /* 狗狗卡片 */
+        .dog-card {
+            background-color: #ffffff;
+            border-radius: 18px;
+            overflow: hidden;
+            height: 100%;
+            border: 1px solid #f0e2d3;
+            box-shadow: 0 4px 12px rgba(145, 111, 79, 0.10);
+            transition: 0.3s;
+        }
+
+        .dog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(145, 111, 79, 0.18);
+        }
+
+        /* 圖片完整呈現，避免過度裁切 */
+        .dog-img {
+            width: 100%;
+            height: 240px;
+            object-fit: contain;
+            background-color: #faf5ee;
+            padding: 8px;
+        }
+
+        .dog-info {
+            padding: 18px;
+            text-align: center;
+        }
+
+        .dog-info h3 {
+            font-size: 21px;
+            font-weight: bold;
+            color: #8b6348;
+        }
+
+        .dog-info p {
+            font-size: 14px;
+            color: #917d6c;
+            margin-bottom: 8px;
+        }
+
+        /* 認養標籤 */
+        .tag {
+            display: inline-block;
+            background-color: #f9e6d5;
+            color: #b47750;
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        /* 按鈕 */
+        .btn-adopt {
+            background-color: #dca17c;
+            color: #ffffff;
+            border-radius: 25px;
+            padding: 8px 25px;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-adopt:hover {
+            background-color: #bd805c;
+            color: #ffffff;
+        }
+
+        /* 第二區塊 */
+        .service-box {
+            background-color: #f6eadc;
+            border-radius: 18px;
+            padding: 25px 15px;
+            text-align: center;
+            height: 100%;
+        }
+
+        .service-box h3 {
+            font-size: 21px;
+            font-weight: bold;
+            color: #946c50;
+        }
+
+        .service-box p {
+            color: #927d6c;
+            margin-bottom: 0;
+        }
+
+        .service-number {
+            font-size: 35px;
+            font-weight: 900;
+            color: #d49b73;
+            margin-bottom: 8px;
+        }
+
+        /* 認養流程 */
+        .process-box {
+            background-color: #fff;
+            border: 1px solid #f0e2d3;
+            border-radius: 15px;
+            padding: 20px 10px;
+            text-align: center;
+            height: 100%;
+        }
+
+        .process-box h3 {
+            color: #986e51;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .process-box p {
+            font-size: 14px;
+            color: #998675;
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        .footer {
+            min-height: 160px;
+            background-color: #eeddc9;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            color: #8b6348;
+        }
+
+        .footer h3 {
+            font-weight: 900;
+        }
+
+        .footer p {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 576px) {
+            .header h1 {
+                font-size: 27px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .dog-img {
+                height: 210px;
+            }
+
+            .section-title {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="row">
+            <div class="col-12 mt-3 d-md-none d-lg-block">
+                <div class="header">
+                    <h1>🐾 毛孩幸福中途之家</h1>
+                    <p>給浪浪一個家，讓愛不再流浪</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 導覽列 -->
+        <div class="row">
+            <div class="col-12 mt-3">
+                <nav class="navbar-custom text-center">
+                    <a href="#">首頁</a>
+                    <a href="#dogs">待認養狗狗</a>
+                    <a href="#service">認養資訊</a>
+                    <a href="#process">認養流程</a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- 第一區：狗狗認養 -->
+        <h2 class="section-title" id="dogs">
+            🐶 尋找幸福的毛孩
+        </h2>
+
+        <p class="section-subtitle">
+            每一隻狗狗都值得擁有一個溫暖的家
+        </p>
+
+        <div class="row">
+
+            <div class="col-sm-6 col-lg-4 col-xxl-2 mt-3">
+                <div class="dog-card">
+                    <img src="img/dog01.avif" class="dog-img" alt="待認養狗狗01">
+                    <div class="dog-info">
+                        <span class="tag">等待認養中</span>
+                        <h3>小白</h3>
+                        <p>性別：男生</p>
+                        <p>個性：活潑親人</p>
+                        <p>年齡：約2歲</p>
+                        <a href="#process" class="btn-adopt">認養資訊</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 col-xxl-2 mt-3">
+                <div class="dog-card">
+                    <img src="img/dog02.avif" class="dog-img" alt="待認養狗狗02">
+                    <div class="dog-info">
+                        <span class="tag">等待認養中</span>
+                        <h3>奶茶</h3>
+                        <p>性別：女生</p>
+                        <p>個性：溫柔乖巧</p>
+                        <p>年齡：約1歲</p>
+                        <a href="#process" class="btn-adopt">認養資訊</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 col-xxl-2 mt-3">
+                <div class="dog-card">
+                    <img src="img/dog03.avif" class="dog-img" alt="待認養狗狗03">
+                    <div class="dog-info">
+                        <span class="tag">等待認養中</span>
+                        <h3>布丁</h3>
+                        <p>性別：男生</p>
+                        <p>個性：親人愛撒嬌</p>
+                        <p>年齡：約3歲</p>
+                        <a href="#process" class="btn-adopt">認養資訊</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 col-xxl-2 mt-3">
+                <div class="dog-card">
+                    <img src="img/dog04.avif" class="dog-img" alt="待認養狗狗04">
+                    <div class="dog-info">
+                        <span class="tag">等待認養中</span>
+                        <h3>球球</h3>
+                        <p>性別：女生</p>
+                        <p>個性：活潑好動</p>
+                        <p>年齡：約2歲</p>
+                        <a href="#process" class="btn-adopt">認養資訊</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 col-xxl-2 mt-3">
+                <div class="dog-card">
+                    <img src="img/dog05.avif" class="dog-img" alt="待認養狗狗05">
+                    <div class="dog-info">
+                        <span class="tag">等待認養中</span>
+                        <h3>豆豆</h3>
+                        <p>性別：男生</p>
+                        <p>個性：安靜溫和</p>
+                        <p>年齡：約1歲</p>
+                        <a href="#process" class="btn-adopt">認養資訊</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 col-xxl-2 mt-3">
+                <div class="dog-card">
+                    <img src="img/dog06.avif" class="dog-img" alt="待認養狗狗06">
+                    <div class="dog-info">
+                        <span class="tag">等待認養中</span>
+                        <h3>小黑</h3>
+                        <p>性別：女生</p>
+                        <p>個性：聰明貼心</p>
+                        <p>年齡：約3歲</p>
+                        <a href="#process" class="btn-adopt">認養資訊</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 第二區：認養理念 -->
+        <h2 class="section-title" id="service">
+            💗 我們的認養理念
+        </h2>
+
+        <p class="section-subtitle">
+            領養代替購買，給生命一次幸福的機會
+        </p>
+
+        <div class="row">
+
+            <div class="col-sm-6 col-lg-3 col-xxl-2 mt-3">
+                <div class="service-box">
+                    <div class="service-number">01</div>
+                    <h3>愛心陪伴</h3>
+                    <p>讓每隻狗狗都能感受到溫暖與關愛。</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3 col-xxl-2 mt-3">
+                <div class="service-box">
+                    <div class="service-number">02</div>
+                    <h3>健康照護</h3>
+                    <p>重視狗狗的健康，提供基本照護。</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3 col-xxl-2 mt-3">
+                <div class="service-box">
+                    <div class="service-number">03</div>
+                    <h3>友善認養</h3>
+                    <p>協助認養人找到適合自己的毛孩。</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3 col-xxl-2 mt-3">
+                <div class="service-box">
+                    <div class="service-number">04</div>
+                    <h3>終身承諾</h3>
+                    <p>認養不只是開始，更是一輩子的責任。</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 第三區：認養流程 -->
+        <h2 class="section-title" id="process">
+            🏡 如何認養狗狗？
+        </h2>
+
+        <p class="section-subtitle">
+            簡單四個步驟，讓你與毛孩相遇
+        </p>
+
+        <div class="row">
+
+            <div class="col-md-6 col-xl-3 mt-3">
+                <div class="process-box">
+                    <div class="service-number">01</div>
+                    <h3>挑選毛孩</h3>
+                    <p>瀏覽狗狗資料，尋找適合自己的夥伴。</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-3 mt-3">
+                <div class="process-box">
+                    <div class="service-number">02</div>
+                    <h3>聯絡我們</h3>
+                    <p>與中途之家聯繫，了解狗狗的詳細資訊。</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-3 mt-3">
+                <div class="process-box">
+                    <div class="service-number">03</div>
+                    <h3>互動見面</h3>
+                    <p>親自與狗狗相處，培養彼此的感情。</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-3 mt-3">
+                <div class="process-box">
+                    <div class="service-number">04</div>
+                    <h3>幸福回家</h3>
+                    <p>完成認養程序，迎接新的家庭成員。</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 第四區：幸福分享 -->
+        <h2 class="section-title">
+            🐕 幸福認養分享
+        </h2>
+
+        <div class="row">
+            <div class="col-md-6 col-xl-3 mt-3">
+                <div class="dog-card">
+                    <img src="img/dog07.avif" class="dog-img" alt="幸福認養狗狗07">
+                    <div class="dog-info">
+                        <span class="tag">幸福新生活</span>
+                        <h3>找到幸福的家</h3>
+                        <p>每一次相遇，都是一段美好的開始。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="row">
+            <div class="col-12 mt-3">
+                <div class="footer">
+                    <h3>🐾 毛孩幸福中途之家</h3>
+                    <p>用愛守護每一個小生命</p>
+                    <p>聯絡電話：04-1234-5678</p>
+                    <p>地址：台中市幸福路 100 號</p>
+                    <p>© 2026 毛孩幸福中途之家 All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

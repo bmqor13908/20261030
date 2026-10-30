@@ -1,0 +1,232 @@
+body {
+    background-color: var(--bg001);
+}
+
+.wrapper {
+    width: 1024px;
+    height: 180px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    background-color: var(--border001);
+    width: 1024px;
+    height: 180px;
+    line-height: 180px;
+    text-align: center;
+    font-size: 70px;
+    color: var(--text001);
+    background-image: url(../img/ghost2.avif);
+    background-position: center center;
+    background-size: cover;
+}
+
+nav {
+    background-color: var(--tech001);
+    text-align: center;
+    margin-top: 3px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+nav ul {
+    display: inline-block;
+}
+
+nav ul li {
+    float: left;
+    list-style-type: none;
+}
+
+nav ul li a {
+    display: block;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: var(--bg005);
+    color: var(--text003);
+    text-decoration: none;
+    margin-right: 20px;
+    border-radius: 20px;
+}
+
+nav ul li a:hover {
+    background-color: var(--border003);
+    color: var(--text002);
+    box-shadow: 2px 2px 2px 2px var(--border004);
+}
+
+.content {
+    background-color: var(--bg005);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 3px;
+    background-image: url(../img/ghost1.avif);
+    background-position: center center;
+    background-size: cover;
+}
+
+.content h1 {
+    font-size: 48px;
+    text-align: center;
+    color: var(--success);
+}
+
+.content p {
+    font-size: 22px;
+    margin-top: 40px;
+    color: var(--danger)
+}
+
+.content a {
+    display: block;
+    background-color: var(--energy);
+    text-align: center;
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 0;
+    font-weight: bold;
+    text-decoration: none;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    color: var(--text003);
+    border-radius: 15px;
+}
+
+.content a:hover {
+    background-color: var(--arcane001);
+    color: var(--danger);
+    box-shadow: 2px 2px 2px 2px var(--bg002);
+}
+
+.footer {
+    background-color: var(--tech001);
+    margin-top: 3px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--text004);
+}
+
+.content .box-container{
+    width: 850px;
+    margin-top: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.content .box1, 
+.content .box2 {
+    width: 400px;
+    height: 300px;
+    background-position: center center;
+    background-size: cover; 
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content .box1 {
+    
+    background-image: url(../img/ghost3.avif);
+    margin-right: 50px;
+}
+
+.content .box2 {
+    background-image: url(../img/ghost4.avif);
+}
+
+@media screen and (max-width: 1024px) {
+    .wrapper {
+        width: 95%;
+    }
+
+    .logo {
+        width: 100%;
+        background-color: blueviolet;
+        background-image: url(../img/kowai.avif);
+        background-position: center center;
+        background-size: cover;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        width: 95%;
+    }
+
+    .logo {
+        width: 100%;
+        background-color: darkslategrey;
+        background-image: url(../img/kowai2.avif);
+        background-position: center center;
+        background-size: cover;
+    }
+
+    nav ul {
+        display: block;
+    }
+
+    nav ul li {
+        float: none;
+        margin-bottom: 15px;
+    }
+
+    nav ul li a {
+        display: block;
+        margin-right: 150px;
+        margin-left: 150px;
+    }
+
+    .content {
+        padding-left: 40px;
+        padding-right: 40px;
+        background-color: blueviolet;
+    }
+
+    .content h1 {
+        font-size: 35px;
+        color: brown;
+    }
+
+    .content p {
+        font-size: 18px;
+        color: palegoldenrod
+    }
+
+    .content a {
+        color: seashell;
+        background-color: firebrick;
+    }
+
+        .content .box-container {
+        width: 100%;                   /* 容器寬度改為滿版 */
+    }
+
+    .content .box1, 
+    .content .box2 {
+        float: none;                   /* ◄ 取消浮動，改回上下堆疊 */
+        width: 90%;                    /* 寬度改為依螢幕比例 */
+        margin-left: auto;             /* 重新置中 */
+        margin-right: auto;            /* 重新置中 */
+    }
+
+    .content .box1 {
+        margin-right: auto;            /* 取消原本的右邊距 */
+        margin-bottom: 20px;           /* ◄ 改為與下方第二個格子的間距 */
+    }
+}
